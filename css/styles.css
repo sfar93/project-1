@@ -64,56 +64,6 @@ section {
   padding: 20px;
   gap: 20px;
 }
-/*
-h2, ul.menu {
-  display: flex;
-  background-color: #333;
-  padding: 10px;
-}
-
-h2, ul.menu > li {
-  position: relative;
-}
-
-h2, ul.menu > li > a {
-  color: white;
-  text-decoration: none;
-  padding: 10px 20px;
-  display: block;
-}
-
-.dropdown-menu {
-  display: none; 
-  position: absolute;
-  top: 100%; 
-  left: 0;
-  background-color: #444;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  padding: 0;
-}
-
-.dropdown-menu li {
-  padding: 0;
-}
-
-.dropdown-menu li {
-  color: white;
-  text-decoration: none;
-  padding: 10px 20px;
-  display: block;
-}
-*/
-
-/* Show dropdown on hover */
-
-/* nav ul.menu > li:hover > ul.dropdown-menu {
-  display: block;
-}
-
-/* Optional: Hover effects */
-/* nav ul.dropdown-menu li a:hover {
-  background-color: #555;
-} */
 
 .dropdown-menu {
   list-style-type: none;
