@@ -52,7 +52,7 @@ section {
   flex: 3;
   padding: 20px;
   width: 80%;
-  background-color: black;
+  background-color: rgb(68, 100, 26);
   justify-content: center;
 }
 
@@ -65,3 +65,46 @@ section {
   gap: 20px;
 }
 
+.dropdown-menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: none; 
+  position: relative; 
+  background-color: #f8f8f8; 
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+  border-radius: 5px;
+  min-width: 200px; 
+  
+}
+
+.dropdown-menu li {
+  padding: 10px 15px;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd; 
+}
+
+.dropdown-menu li:last-child {
+  border-bottom: none; 
+}
+
+.dropdown-menu li:hover {
+  background-color: #e8e8e8; 
+}
+
+
+#foodtypes:hover + .dropdown-menu {
+  display: inline;
+}
+
+#mealtype:hover + .dropdown-menu {
+  display: inline;
+}
+
+#timeofday:hover + .dropdown-menu {
+  display: inline;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
