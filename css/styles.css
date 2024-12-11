@@ -69,30 +69,30 @@ section {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  display: none; /* Initially hidden */
-  position: relative; /* Position the dropdown */
-  background-color: #f8f8f8; /* Background for dropdown */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
+  display: none; 
+  position: relative; 
+  background-color: #f8f8f8; 
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
   border-radius: 5px;
-  min-width: 200px; /* Width of dropdown */
+  min-width: 200px; 
   
 }
 
 .dropdown-menu li {
   padding: 10px 15px;
   cursor: pointer;
-  border-bottom: 1px solid #ddd; /* Separator between items */
+  border-bottom: 1px solid #ddd; 
 }
 
 .dropdown-menu li:last-child {
-  border-bottom: none; /* No border for last item */
+  border-bottom: none; 
 }
 
 .dropdown-menu li:hover {
-  background-color: #e8e8e8; /* Hover effect */
+  background-color: #e8e8e8; 
 }
 
-/* Show dropdown on hover of the header */
+
 #foodtypes:hover + .dropdown-menu {
   display: inline;
 }
@@ -103,4 +103,8 @@ section {
 
 #timeofday:hover + .dropdown-menu {
   display: inline;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
 }
