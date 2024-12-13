@@ -57,7 +57,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   let selectedFoodTypes = [];
   let selectedMealTypes = [];
-  let selectedTimeOfDay = [];
 
   // const restaurants = await getData();
 
