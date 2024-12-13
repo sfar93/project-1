@@ -57,15 +57,15 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   let selectedFoodTypes = [];
   let selectedMealTypes = [];
-  let selectedTimeOfDay = [];
 
   // const restaurants = await getData();
 
   const applyFoodTypeFilter = () => {
     console.log(restaurants)
+
     const filteredRestaurants = restaurants.filter(restaurant => {
       let hasType = restaurant.cuisines.some(cuisine => selectedFoodTypes.includes(cuisine));
-       hasType = restaurant.meal_types.some(meal_type => selectedMealTypes.includes(meal_type));
+          hasType = restaurant.meal_types.some(meal_type => selectedMealTypes.includes(meal_type));
       return hasType;
     })
     console.log(filteredRestaurants);
@@ -99,8 +99,9 @@ document.addEventListener("DOMContentLoaded", async function () {
           applyFoodTypeFilter()
         }else if (event.target.name == "mealtype"){
           selectedMealTypes = selectedMealTypes.filter(function (item){
-
+            return item !== event.target.value
           })
+          applyFoodTypeFilter()
         
         }
       } else {
@@ -111,10 +112,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         }else if (event.target.name == "mealtype") {
           selectedMealTypes.push(event.target.value);
           applyFoodTypeFilter()
+          return
     }
   }
       
-
     });
     
    
@@ -127,11 +128,17 @@ document.addEventListener("DOMContentLoaded", async function () {
       const restaurant = restaurants[i];
   
       const art = document.createElement('article');
+      art.classList.add('restaurant-box');
       art.textContent = restaurant.name;
       
       api.appendChild(art);
       
     }
+    api.style.display='flex';
+    api.style.flexDirection = 'column';
+    api.style.flexWrap = 'wrap';
+    api.style.height = '600px';
+
   }
 
 });
