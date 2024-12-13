@@ -1,72 +1,106 @@
-document.addEventListener("DOMContentLoaded", function() {
-  const filters = document.querySelectorAll("container");
-  const checkboxe = document.querySelectorAll("checkbox");
+// const RAPID_API_KEY = '9a8665d796mshf47bbffaf7306a1p118883jsn7efa357f83ed'
+const RAPID_API_KEY = '1456abf87cmshfa52d039b76b2a2p1c6c6bjsneec8df59ca1b'
 
-  filters.forEach(filter => {
-    filter.addEventListener('change', () => {
-      applyFilters();
-    });
+// const getData = async () => {
+//   const url = 'https://tripadvisor-scraper.p.rapidapi.com/restaurants/list?query=salt%20lake%20city&page=1';
+//   const options = {
+//     method: 'GET',
+//     headers: {
+//       'x-rapidapi-key': RAPID_API_KEY,
+//       'x-rapidapi-host': 'tripadvisor-scraper.p.rapidapi.com'
+//     }
+//   };
+
+//   try {
+//     const response = await fetch(url, options);
+//     const result = await response.json();
+
+//     const detailedRestaurantsInfo = [];
+
+//     for (let i = 0; i < result.results.length; i++) {
+//       const url = `https://tripadvisor-scraper.p.rapidapi.com/restaurants/detail?id=${result.results[i].id}`;
+//       const options = {
+//         method: 'GET',
+//         headers: {
+//           'x-rapidapi-key': RAPID_API_KEY,
+//           'x-rapidapi-host': 'tripadvisor-scraper.p.rapidapi.com'
+//         }
+//       };
+
+//       try {
+//         const response = await fetch(url, options);
+//         const result = await response.json();
+//         detailedRestaurantsInfo.push(result)
+
+
+//       } catch (error) {
+//         console.error(error);
+//       }
+
+//     }
+
+//     localStorage.setItem("restaurants", JSON.stringify(detailedRestaurantsInfo));
+//     console.log(detailedRestaurantsInfo)
+
+//     return result.results
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
+
+
+document.addEventListener("DOMContentLoaded", async function () {
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  const selectAllButton = document.getElementById('select-all');
+
+  let selectedFoodTypes = [];
+
+  // const restaurants = await getData();
+
+  const applyFoodTypeFilter = () => {
+    console.log(restaurants)
+    const filteredRestaurants = restaurants.filter(restaurant => {
+      const hasType = restaurant.cuisines.some(cuisine => selectedFoodTypes.includes(cuisine));
+      return hasType;
+    })
+    console.log(filteredRestaurants)
+  }
+
+
+  const applyFilters = () => {
+
+  }
+
+  selectAllButton.addEventListener('click', () => {
+    //const selectAllChecked = selectAllButton.checked;
+    checkboxes.forEach(checkbox => checkbox.checked = true);
+    applyFilters();
+    return;
   });
 
   checkboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', () => {
-      applyFilters();
+    checkbox.addEventListener('change', (event) => {
+      // Uncheck the "Select All" button if any checkbox is unchecked
+
+      if (!checkbox.checked) {
+        selectAllButton.checked = false;
+
+        if (event.target.name == "food") {
+          selectedFoodTypes = selectedFoodTypes.filter(function (item) {
+            return item !== event.target.value
+          })
+          applyFoodTypeFilter()
+        }
+      } else {
+        if (event.target.name == "food") {
+          selectedFoodTypes.push(event.target.value);
+          applyFoodTypeFilter()
+        }
+      }
+
+
     });
   });
 
-// Add event listener to the Select All button
-selectAllButton.addEventListener("click", () => {
-  // Loop through each checkbox and set it to checked
-  checkbox.forEach((checkbox) => {
-    checkbox.checked = true;
-  });
-});
-
-  function applyFilters() {
-    const activeFilters = document.querySelectorAll('ul li.active');
-    const activeCategories = Array.from(activeFilters).map(filter => filter.textContent);
-    const checkedBoxes = Array.from(checkboxes).filter(checkbox => checkbox.checked);
-    const checkedCategories = checkedBoxes.map(box => box.value);
-
-   // Get the food types heading and dropdown container
-const foodTypes = document.getElementById("foodtypes");
-const dropdownContainer = document.querySelector(".dropdown-container");
-
-// Toggle the dropdown menu on click
-foodTypes.addEventListener("click", () => {
-  dropdownContainer.classList.toggle("open");
-});
-
-// Close the dropdown if clicking outside of it
-document.addEventListener("click", (event) => {
-  if (!dropdownContainer.contains(event.target)) {
-    dropdownContainer.classList.remove("open");
-  }
-});
-
-
-
-    // Filter restaurants based on active categories and checked boxes
-    const filteredRestaurants = restaurants.filter(restaurant => {
-      return activeCategories.includes(restaurant.meal) ||
-             activeCategories.includes(restaurant.time) ||
-             checkedCategories.includes(restaurant.type);
-    });
-
-    // Update the .api section with filtered restaurants
-    const apiSection = document.querySelector('.api');
-    apiSection.innerHTML = '';
-    if (filteredRestaurants.length === 0) {
-      apiSection.innerHTML = '<p>No restaurants match the selected criteria.</p>';
-    } else {
-      filteredRestaurants.forEach(restaurant => {
-        const restaurantElement = document.createElement('div');
-        restaurantElement.classList.add('restaurant');
-        restaurantElement.textContent = restaurant.name;
-        apiSection.appendChild(restaurantElement);
-      });
-      
-    }
-  }
 
 });
