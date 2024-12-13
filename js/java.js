@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   let selectedFoodTypes = [];
   let selectedMealTypes = [];
+  //let addressType =[];
 
   // const restaurants = await getData();
 
@@ -64,13 +65,16 @@ document.addEventListener("DOMContentLoaded", async function () {
     console.log(restaurants)
 
     const filteredRestaurants = restaurants.filter(restaurant => {
-      let hasType = restaurant.cuisines.some(cuisine => selectedFoodTypes.includes(cuisine));
-          hasType = restaurant.meal_types.some(meal_type => selectedMealTypes.includes(meal_type));
+
+      let hasType = restaurant.cuisines.some(cuisine => selectedFoodTypes.includes(cuisine)) ||
+          restaurant.meal_types.some(meal_type => selectedMealTypes.includes(meal_type));
+          //restaurant.address.some(address => address.includes(address));
       return hasType;
     })
     console.log(filteredRestaurants);
     
     renderRestaurants(filteredRestaurants);
+    
   }
 
 
@@ -81,7 +85,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   selectAllButton.addEventListener('click', () => {
     //const selectAllChecked = selectAllButton.checked;
     checkboxes.forEach(checkbox => checkbox.checked = true);
-    applyFilters();
+    //applyFilters();
+    renderRestaurants(restaurants);
     return;
   });
 
@@ -126,13 +131,20 @@ document.addEventListener("DOMContentLoaded", async function () {
     api.innerHTML = '';
     for (let i = 0; i < restaurants.length; i++){
       const restaurant = restaurants[i];
-  
-      const art = document.createElement('article');
-      art.classList.add('restaurant-box');
+      
+      const parentDiv = document.createElement ('div');
+      parentDiv.classList.add('card-parent');
+
+      const art = document.createElement('p');
+      art.classList.add('restaurant-name');
       art.textContent = restaurant.name;
+      parentDiv.appendChild(art);
       
-      api.appendChild(art);
-      
+      const addi = document.createElement('p');
+      addi.classList.add('restaurant-address');
+      addi.textContent = restaurant.address;
+      parentDiv.appendChild(addi);
+      api.appendChild(parentDiv);
     }
     api.style.display='flex';
     api.style.flexDirection = 'column';
