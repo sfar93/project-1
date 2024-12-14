@@ -145,11 +145,32 @@ document.addEventListener("DOMContentLoaded", async function () {
       addi.textContent = restaurant.address;
       parentDiv.appendChild(addi);
       api.appendChild(parentDiv);
+
+      const contact = document.createElement('p');
+      contact.classList.add('restaurant-phone');
+      contact.textContent = restaurant.phone;
+      parentDiv.appendChild(contact);
+      api.appendChild(parentDiv);
+
+      const web = document.createElement('p');
+      web.classList.add('restaurant-website');
+      web.textContent = restaurant.website;
+      parentDiv.appendChild(web);
+      api.appendChild(parentDiv);
+
+      const stars = document.createElement('p');
+      stars.classList.add('restaurant-rating');
+      stars.textContent = restaurant.rating;
+      parentDiv.appendChild(stars);
+      api.appendChild(parentDiv);
+      
+      
     }
     api.style.display='flex';
-    api.style.flexDirection = 'column';
+    api.style.flexDirection = 'row';
     api.style.flexWrap = 'wrap';
-    api.style.height = '600px';
+    api.style.textWrap = 'wrap';
+    
 
   }
 
