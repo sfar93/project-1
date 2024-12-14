@@ -1,18 +1,22 @@
 :root {
   --oliveGreen: #0e5c14d3;
-  --darkBlue: #0a1280e3;
+  --beige: #F5F5DC;
+  --brownish: #4b380fe0;
+  --lightbrown: #976923de;
 }
 
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
-  background-color: #645618b6;
+  background-color: var(--lightbrown);
 }
 
 header {
   background-color: var(--oliveGreen);
   align-items: center;
   padding: 25px;
+  box-shadow: 5px 5px 5px black;
+  color: var(--beige);
 }
   
 h1 {
@@ -40,12 +44,13 @@ section {
 }
 
 .section-item {
-  background-color: #b34444da;
+  background-color: var(--brownish);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
   flex: 1;
   box-sizing: border-box;
   flex-direction: column;
+  color: var(--beige);
 }
 
 .api {
@@ -54,7 +59,7 @@ section {
   display: flex;
   padding: 20px;
   width: 80%;
-  background-color: rgb(68, 100, 26);
+  background-color: var(--brownish);
   justify-content: center;
 }
 
@@ -115,7 +120,16 @@ input[type="checkbox"] {
   background-color: var(--oliveGreen);
   margin: 10px;
   padding: 10px;
-  width: 250px;
+  width: 450px;
   border: 1px solid #ccc;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 10px 10px 5px black;
+  font-size: 25px;
+  color: var(--beige);
+  border-radius: 25px;
+}
+
+ul.dropdown-menu {
+  background-color: var(--brownish);
+  border-radius: 15px;
+  box-shadow: 10px 10px 5px black;
 }

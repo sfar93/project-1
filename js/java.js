@@ -147,9 +147,9 @@ document.addEventListener("DOMContentLoaded", async function () {
       api.appendChild(parentDiv);
     }
     api.style.display='flex';
-    api.style.flexDirection = 'column';
+    api.style.flexDirection = 'row';
     api.style.flexWrap = 'wrap';
-    api.style.height = '600px';
+    api.style.height = '1800px';
 
   }
 
