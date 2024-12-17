@@ -24,7 +24,7 @@ Whatcha Eating?
    Dropdown menus for meal types and food types.
    "Select All" and "Clear All" buttons for easier selection management.
    Interactive filtering of restaurants based on user selections.
-   A clean and responsive interface powered by * * CSS Framework.
+   A clean and responsive interface powered by bootstrap.
    Restaurant cards displaying key details:
    Name
    Address
@@ -35,7 +35,7 @@ Whatcha Eating?
  ## Technologies Used:
 
    HTML5
-   CSS3 (with * * for responsive design)
+   CSS3 (with bootstrap for responsive design)
    JavaScript (ES6)
 
  ## Screenshot:
@@ -44,4 +44,4 @@ Whatcha Eating?
 
  ## Link:
 
-    *file:///C:/Users/gavac/bootcamp/project-1/index.html
+    https://sfar93.github.io/project-1/
