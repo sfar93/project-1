@@ -52,6 +52,7 @@ const RAPID_API_KEY = '1456abf87cmshfa52d039b76b2a2p1c6c6bjsneec8df59ca1b'
 document.addEventListener("DOMContentLoaded", async function () {
   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
   const selectAllButton = document.getElementById('select-all');
+  const clearAllButton = document.getElementById('clear-all');
   const api = document.querySelector('.api');
   
 
@@ -85,6 +86,14 @@ document.addEventListener("DOMContentLoaded", async function () {
   selectAllButton.addEventListener('click', () => {
     //const selectAllChecked = selectAllButton.checked;
     checkboxes.forEach(checkbox => checkbox.checked = true);
+    //applyFilters();
+    renderRestaurants(restaurants);
+    return;
+  });
+
+  clearAllButton.addEventListener('click', () => {
+    //const selectAllChecked = selectAllButton.checked;
+    checkboxes.forEach(checkbox => checkbox.checked = false);
     //applyFilters();
     renderRestaurants(restaurants);
     return;
