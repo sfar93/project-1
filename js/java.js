@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     //const selectAllChecked = selectAllButton.checked;
     checkboxes.forEach(checkbox => checkbox.checked = false);
     //applyFilters();
-    renderRestaurants(restaurants);
+    renderRestaurants ([]);
     return;
   });
 
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       if (!checkbox.checked) {
         selectAllButton.checked = false;
-
+        
         if (event.target.name == "food") {
           selectedFoodTypes = selectedFoodTypes.filter(function (item) {
             return item !== event.target.value
@@ -161,9 +161,11 @@ document.addEventListener("DOMContentLoaded", async function () {
       parentDiv.appendChild(contact);
       api.appendChild(parentDiv);
 
-      const web = document.createElement('p');
+      const web = document.createElement('a');
       web.classList.add('restaurant-website');
+      web.href = restaurant.website;
       web.textContent = restaurant.website;
+      web.target = '_blank';
       parentDiv.appendChild(web);
       api.appendChild(parentDiv);
 
